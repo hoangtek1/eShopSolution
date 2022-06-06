@@ -5,15 +5,51 @@
     ViewData["Title"] = "Danh sách người dùng";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+@section Scripts {
+    <script>
+        setTimeout(function () {
+            $('#msgAlert').fadeOut('slow');
+        }, 3000)
+    </script>
+}
 <div class="container-fluid">
     <h1 class="mt-4">Danh sách người dùng</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
         <li class="breadcrumb-item active">Danh sách người dùng</li>
     </ol>
-    <div class="card mb-4">
+    <div class="card mb-12">
         <div class="card-header">
-            <a class="btn btn-success" asp-action="Create" asp-controller="User">Tạo mới</a>
+            <div class="row">
+                <div class="col-md-2">
+                    <a class="btn btn-success" asp-action="Create" asp-controller="User">Tạo mới</a>
+                </div>
+                <div class="col-md-4">
+                    @if (ViewBag.SuccessMsg != null)
+                    {
+                        <div id="msgAlert" class="alert alert-success" role="alert">
+                            @ViewBag.SuccessMsg
+                        </div>
+                    }
+                </div>
+                <div class="col-md-6">
+                    <form asp-action="Index" method="get">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <input type="text" name="keyword" class="form-control" />
+                            </div>
+                            <div class="col-md-4">
+                                <button type="submit" value="@ViewBag.Keyword" class="btn btn-primary">Tìm kiếm</button>
+                                <button type="button" onclick="window.location.href='/User/Index'"
+                                        class="btn btn-dark">
+                                    Tất cả
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
 
         <div class="card-body">

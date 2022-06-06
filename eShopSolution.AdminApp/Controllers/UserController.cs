@@ -26,7 +26,7 @@ namespace eShopSolution.AdminApp.Controllers
             _userApiClient = userApiClient;
         }
 
-        public async Task<IActionResult> Index(string keyword, int pageIndex = 1, int pageSize = 1)
+        public async Task<IActionResult> Index(string keyword, int pageIndex = 1, int pageSize = 10)
         {
             var request = new GetUserPagingRequest()
             {
@@ -35,6 +35,11 @@ namespace eShopSolution.AdminApp.Controllers
                 PageSize = pageSize
             };
             var data = await _userApiClient.GetUsersPagings(request);
+            ViewBag.Keyword = keyword;
+            if(TempData["result"] != null)
+            {
+                ViewBag.SuccessMsg = TempData["result"];
+            }
             return View(data.ResultObject);
         }
 
@@ -61,6 +66,7 @@ namespace eShopSolution.AdminApp.Controllers
             var result = await _userApiClient.RegisterUser(request);
             if (result.IsSuccessed)
             {
+                TempData["result"] = "Tạo người dùng thành công";
                 return RedirectToAction("Index");
             }
 
@@ -99,6 +105,7 @@ namespace eShopSolution.AdminApp.Controllers
             var result = await _userApiClient.UpdateUser(request.Id,request);
             if (result.IsSuccessed)
             {
+                TempData["result"] = "Chỉnh sửa người dùng thành công!";
                 return RedirectToAction("Index");
             }
 
@@ -111,7 +118,7 @@ namespace eShopSolution.AdminApp.Controllers
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             HttpContext.Session.Remove("Token");
-            return RedirectToAction("Login", "User");
+            return RedirectToAction("Index", "Login");
         }
 
         [HttpGet]
@@ -133,6 +140,7 @@ namespace eShopSolution.AdminApp.Controllers
             var result = await _userApiClient.Delete(request.Id);
             if (result.IsSuccessed)
             {
+                TempData["result"] = "Xóa người dùng thành công!";
                 return RedirectToAction("Index");
             }
 

@@ -40,7 +40,11 @@ namespace eShopSolution.AdminApp.Controllers
                 return View(ModelState);
 
             var result = await _userApiClient.Authenticate(request);
-
+            if (result.ResultObject == null)
+            {
+                ModelState.AddModelError("", result.Message);
+                return View();
+            }
             var userPrincipal = this.ValidateToken(result.ResultObject);
             var authProperties = new AuthenticationProperties
             {
