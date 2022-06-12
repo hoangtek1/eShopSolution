@@ -28,7 +28,7 @@
                 <div class="col-md-4">
                     @if (ViewBag.SuccessMsg != null)
                     {
-                        <div id="msgAlert" class="alert alert-success" role="alert">
+                        <div style="padding: 6px; margin-bottom:0px;" id="msgAlert" class="alert alert-success" role="alert">
                             @ViewBag.SuccessMsg
                         </div>
                     }
@@ -37,10 +37,10 @@
                     <form asp-action="Index" method="get">
                         <div class="row">
                             <div class="col-md-8">
-                                <input type="text" name="keyword" class="form-control" />
+                                <input type="text" value="@ViewBag.Keyword" name="keyword" class="form-control" />
                             </div>
                             <div class="col-md-4">
-                                <button type="submit" value="@ViewBag.Keyword" class="btn btn-primary">Tìm kiếm</button>
+                                <button type="submit"  class="btn btn-primary">Tìm kiếm</button>
                                 <button type="button" onclick="window.location.href='/User/Index'"
                                         class="btn btn-dark">
                                     Tất cả
@@ -95,9 +95,10 @@
                                     @Html.DisplayFor(modelItem => item.Email)
                                 </td>
                                 <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                    @Html.ActionLink("Sửa", "Edit", new { id = item.Id }) |
+                                    @Html.ActionLink("Xem", "Details", new { id = item.Id }) |
+                                    @Html.ActionLink("Xóa", "Delete", new { id = item.Id }) |
+                                    @Html.ActionLink("Cấp quyền", "RoleAssign", new { id = item.Id })
                                 </td>
                             </tr>
                         }

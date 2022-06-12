@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using eShopSolution.Utilities.Constants;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -16,10 +17,10 @@ namespace eShopSolution.Data.EF
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")
                 .Build();
+            // Coi chung cho nay
+            var connectionString = configuration.GetConnectionString(SystemConstants.MainConnectionString); 
 
-            var connectionString = configuration.GetConnectionString("eShopSolutionDb");
-
-            var optionsBuilder = new DbContextOptionsBuilder<EShopDbContext>();
+             var optionsBuilder = new DbContextOptionsBuilder<EShopDbContext>();
             optionsBuilder.UseSqlServer(connectionString);
 
             return new EShopDbContext(optionsBuilder.Options);

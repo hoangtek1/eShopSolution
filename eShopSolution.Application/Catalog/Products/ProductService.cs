@@ -147,7 +147,6 @@ namespace eShopSolution.Application.Catalog.Products
                         join pt in _context.ProductTranslations on p.Id equals pt.ProductId
                         join pic in _context.ProductInCategories on p.Id equals pic.ProductId
                         join c in _context.Categories on pic.CategoryId equals c.Id
-                        where pt.Name.Contains(request.Keyword)
                         select new { p, pt, pic };
             // 2.Filter
             if (!string.IsNullOrEmpty(request.Keyword))
