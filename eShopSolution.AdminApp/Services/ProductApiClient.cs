@@ -35,7 +35,8 @@ namespace eShopSolution.AdminApp.Services
                 $"/api/products/paging?pageIndex={request.PageIndex}" +
                 $"&pageSize={request.PageSize}" +
                 $"&keyWord={request.Keyword}" +
-                $"&languageId={request.LanguageId}");
+                $"&languageId={request.LanguageId}" +
+                $"&categoryId={request.CategoryId}");
             return data;
         }
         public async Task<bool> CreateProduct(ProductCreateRequest request)
