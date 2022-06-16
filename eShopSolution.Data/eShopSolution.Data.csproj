@@ -5,15 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20220530164649_AspNetCoreIdentityDatabase.cs" />
-    <Compile Remove="Migrations\20220530164649_AspNetCoreIdentityDatabase.Designer.cs" />
-    <Compile Remove="Migrations\20220530164857_AspNetCoreIdentityDatabase.cs" />
-    <Compile Remove="Migrations\20220530164857_AspNetCoreIdentityDatabase.Designer.cs" />
-    <Compile Remove="Migrations\20220601050856_AspNetCoreIdentityDatabase.cs" />
-    <Compile Remove="Migrations\20220601050856_AspNetCoreIdentityDatabase.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.25" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.25">
       <PrivateAssets>all</PrivateAssets>

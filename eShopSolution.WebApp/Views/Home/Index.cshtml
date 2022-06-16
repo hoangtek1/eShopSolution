@@ -2,7 +2,392 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@section Ref {
+    <link rel="stylesheet" href="/assets/vendor/owl.carousel/assets/owl.carousel.css">
+    <link rel="stylesheet" href="/assets/vendor/wow/animate.css">
+
+    <script src="/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="/assets/vendor/wow/wow.min.js"></script>
+
+    <!----slider use---->
+    <script type="text/javascript" src="/assets/vendor/slider-js/slideShow.js"></script>
+    <script type="text/javascript" src="/assets/vendor/slider-js/slideWiz.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/vendor/slider-js/slideWiz.css">
+}
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#home-silder').owlCarousel({
+                items: 1,
+                itemsDesktop: [1199, 1],
+                itemsDesktopSmall: [992, 1],
+                itemsTablet: [768, 1],
+                itemsMobile: [450, 1],
+                autoPlay: 10000,
+                pagination: true,
+                navigation: true,
+                navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>']
+            });
+        });
+
+        $(document).ready(function () {
+            $('#testimonial').owlCarousel({
+                items: 3,
+                itemsDesktop: [1199, 3],
+                itemsDesktopSmall: [992, 3],
+                itemsTablet: [768, 2],
+                itemsMobile: [450, 1],
+                autoPlay: 10000,
+                pagination: true,
+                navigation: true,
+                navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>']
+            });
+        });
+
+        $(document).ready(function () {
+            $('#product').owlCarousel({
+                items: 4,
+                itemsDesktop: [1199, 3],
+                itemsDesktopSmall: [992, 3],
+                itemsTablet: [768, 2],
+                itemsMobile: [450, 1],
+                autoPlay: 10000,
+                pagination: false,
+                navigation: true,
+                navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>']
+            });
+        });
+
+    </script>
+}
+
+
+<section>
+    <div id="slideWiz" class="slideWiz" style="width: 100%; height: 500px;"></div>
+</section>
+<!-- about Us -->
+<div id="about_us" class="about_section" style="background-image: url(/assets/image/about_img.jpg);width: 100%;background-repeat: no-repeat; background-size: cover;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="about_text wow slideInLeft">
+                    <h1><localize>Hurry Up!</localize></h1>
+                    <h2>Hurry Up! Daily Deal Of The Day</h2>
+                    <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. or randomised words which don't look even slightly believable.</p>
+                    <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. or randomised words which don't look even slightly believable.</p>
+
+                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+
+                    <!--<h3>Contact Us</h3>
+                    <h2 class="about_contact"><i class="fa fa-volume-control-phone"></i> +91-123-456-7890</h2>-->
+                    <a href="about_us.html" class="btn">Shop Now</a>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="about_images wow slideInRight">
+                    <!--<img src="/assets/image/about_img.jpg" width="100%" alt="silder images" title="silder images">-->
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<!-- about Us end-->
+<!-- Our products  -->
+<div id="products" class="products_section">
+    <div class="container-fluid">
+        <div class="heading_wrapper wow fadeInDown animated">
+            <h2 class="wow fadeInDown animated"><localize>Our Products</localize></h2>
+            <p class="wow fadeInDown animated">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text </p>
+        </div>
+        <div class="row">
+            <div id="product" class="owl-carousel owl-theme">
+                <!--1 -->
+                <div class="item">
+                    <div class="col-sm-12">
+                        <div class="product-thumb">
+                            <div class="image wow fadeInDown animated">
+                                <a href="single-products.html"><img class="wow fadeInDown animated" src="/assets/image/category/product-1.jpg" alt="Kundli Dosha" title="Kundli Dosha"></a>
+
+                                <div class="sale"><span class="">Sale</span></div>
+                                <div class="button-group">
+                                    <div class="inner">
+                                        <button type="button" title="Quick View" class="button-quickview"><span>Quick View</span></button>
+                                        <button type="button" title="Add to Wish List" class="button-wishlist"><span>Add to Wish List</span></button>
+                                        <button type="button" title="Compare this Product" class="button-compare"><span>Compare this Product</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="caption">
+
+                                <div class="rate-and-title">
+                                    <h4 class="wow fadeInDown animated"><a href="single-products.html">Natural Mineral Stone</a></h4>
+                                    <div class="rating wow fadeInDown animated">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <p class="price wow fadeInDown animated">
+                                        <span class="price-old">$123.20</span> <span class="price-new">$110.00</span>
+                                    </p>
+                                    <button type="button" class="btn wow fadeInDown animated" onclick="" title="Add to Cart"><span><i class="fa fa-shopping-cart"></i> Add to Cart</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 2-->
+                <div class="item">
+                    <div class="col-sm-12">
+                        <div class="product-thumb">
+                            <div class="image wow fadeInDown animated">
+                                <a href="single-products.html"><img class="wow fadeInDown animated" src="/assets/image/category/product-2.jpg" alt="Kundli Dosha" title="Kundli Dosha"></a>
+
+                                <div class="sale"><span class="">Sale</span></div>
+                                <div class="button-group">
+                                    <div class="inner">
+                                        <button type="button" title="Quick View" class="button-quickview"><span>Quick View</span></button>
+                                        <button type="button" title="Add to Wish List" class="button-wishlist"><span>Add to Wish List</span></button>
+                                        <button type="button" title="Compare this Product" class="button-compare"><span>Compare this Product</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="caption">
+
+                                <div class="rate-and-title">
+                                    <h4 class="wow fadeInDown animated"><a href="single-products.html">Natural Agate</a></h4>
+                                    <div class="rating wow fadeInDown animated">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <p class="price wow fadeInDown animated">
+                                        <span class="price-old">$123.20</span> <span class="price-new">$110.00</span>
+                                    </p>
+                                    <button type="button" class="btn wow fadeInDown animated" onclick="" title="Add to Cart"><span><i class="fa fa-shopping-cart"></i> Add to Cart</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 3-->
+                <div class="item">
+                    <div class="col-sm-12">
+                        <div class="product-thumb">
+                            <div class="image wow fadeInDown animated">
+                                <a href="single-products.html"><img class="wow fadeInDown animated" src="/assets/image/category/product-3.jpg" alt="Kundli Dosha" title="Kundli Dosha"></a>
+                                <div class="button-group">
+                                    <div class="inner">
+                                        <button type="button" title="Quick View" class="button-quickview"><span>Quick View</span></button>
+                                        <button type="button" title="Add to Wish List" class="button-wishlist"><span>Add to Wish List</span></button>
+                                        <button type="button" title="Compare this Product" class="button-compare"><span>Compare this Product</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="caption">
+
+                                <div class="rate-and-title">
+                                    <h4 class="wow fadeInDown animated"><a href="single-products.html">Rose Quartz</a></h4>
+                                    <div class="rating wow fadeInDown animated">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <p class="price wow fadeInDown animated">
+                                        <span class="price-new">$50.00</span>
+                                    </p>
+                                    <button type="button" class="btn wow fadeInDown animated" onclick="" title="Add to Cart"><span><i class="fa fa-shopping-cart"></i> Add to Cart</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--4 -->
+                <div class="item">
+                    <div class="col-sm-12">
+                        <div class="product-thumb">
+                            <div class="image wow fadeInDown animated">
+                                <a href="single-products.html"><img class="wow fadeInDown animated" src="/assets/image/category/product-4.jpg" alt="Kundli Dosha" title="Kundli Dosha"></a>
+                                <div class="button-group">
+                                    <div class="inner">
+                                        <button type="button" title="Quick View" class="button-quickview"><span>Quick View</span></button>
+                                        <button type="button" title="Add to Wish List" class="button-wishlist"><span>Add to Wish List</span></button>
+                                        <button type="button" title="Compare this Product" class="button-compare"><span>Compare this Product</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="caption">
+
+                                <div class="rate-and-title">
+                                    <h4 class="wow fadeInDown animated"><a href="single-products.html">Titanium Quartz</a></h4>
+                                    <div class="rating wow fadeInDown animated">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <p class="price wow fadeInDown animated">
+                                        <span class="price-old">$123.20</span> <span class="price-new">$110.00</span>
+                                    </p>
+                                    <button type="button" class="btn wow fadeInDown animated" onclick="" title="Add to Cart"><span><i class="fa fa-shopping-cart"></i> Add to Cart</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--5 -->
+                <div class="item">
+                    <div class="col-sm-12">
+                        <div class="product-thumb">
+                            <div class="image wow fadeInDown animated">
+                                <a href="single-products.html"><img class="wow fadeInDown animated" src="/assets/image/category/product-5.jpg" alt="Kundli Dosha" title="Kundli Dosha"></a>
+
+                                <div class="sale"><span class="">Sale</span></div>
+                                <div class="button-group">
+                                    <div class="inner">
+                                        <button type="button" title="Quick View" class="button-quickview"><span>Quick View</span></button>
+                                        <button type="button" title="Add to Wish List" class="button-wishlist"><span>Add to Wish List</span></button>
+                                        <button type="button" title="Compare this Product" class="button-compare"><span>Compare this Product</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="caption">
+
+                                <div class="rate-and-title">
+                                    <h4 class="wow fadeInDown animated"><a href="single-products.html">Natural Mineral Stone</a></h4>
+                                    <div class="rating wow fadeInDown animated">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <p class="price wow fadeInDown animated">
+                                        <span class="price-old">$123.20</span> <span class="price-new">$110.00</span>
+                                    </p>
+                                    <button type="button" class="btn wow fadeInDown animated" onclick="" title="Add to Cart"><span><i class="fa fa-shopping-cart"></i> Add to Cart</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- products end -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Products End-->
+<!-- Our Astrologers Work for You -->
+<div id="website_visitors" class="astrologers-work">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6 condition-set">
+                <div class="astrologers_title">
+                    <h2 class="wow fadeInDown animated">Our Fashion Shop Work for You</h2>
+                    <p class="wow fadeInDown animated">Our Fashion Shop delivers daily and monthly Shop for all readers of our website visitors.</p>
+                    <p class="wow fadeInDown animated">Recognized as the best esoteric and fashion online in the USA. Every day we publish fresh products, shop by and for professional products, personalized predictions, shop readings, shose and Chinese fashion Brands and much more.</p>
+                    <p class="wow fadeInDown animated">Our Fashion Shop can help you find a proper approach to solving all daily problems and achieving happiness in your life.</p>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="astrologers_visitors">
+                    <div class="col-sm-6">
+                        <div class="astrologers_experience">
+                            <h3 class="wow fadeInDown animated number-counter" data-count-from="0" data-count-to="25" data-count-speed="30"></h3>
+                            <h5 class="wow fadeInDown animated">Years of experience</h5>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="astrologers_experience">
+                            <h3 class="wow fadeInDown animated number-counter" data-count-from="0" data-count-to="15" data-count-speed="30"></h3>
+                            <h5 class="wow fadeInDown animated">Types of best brands</h5>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="astrologers_experience">
+                            <h3 class="wow fadeInDown animated number-counter" data-count-from="0" data-count-to="17" data-count-speed="30"></h3>
+                            <h5 class="wow fadeInDown animated">Best Quality</h5>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="astrologers_experience">
+                            <h3 class="wow fadeInDown animated number-counter" data-count-from="0" data-count-to="1000" data-count-speed="30"></h3>
+                            <h5 class="wow fadeInDown animated">Hourly Fashion</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- testimonial -->
+<div id="testimonials" class="testimonial_section">
+    <div class="container-fluid">
+        <div class="heading_wrapper wow fadeInDown animated">
+            <h2 class="wow fadeInDown animated"><localize>What My Client Says</localize></h2>
+            <p class="wow fadeInDown animated">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text </p>
+        </div>
+        <div class="row">
+            <div id="testimonial" class="owl-carousel owl-theme">
+                <div class="item">
+                    <div class="col-sm-12">
+                        <div class="testimonial_inner_matter">
+                            <img src="/assets/image/testimonial/1.jpg" class="wow fadeInDown animated">
+                            <p class="wow fadeInDown animated">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                            <h5 class="wow fadeInDown animated">Shoko Mugikura</h5>
+                            <h6 class="wow fadeInDown animated">Design Manager</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="col-sm-12">
+                        <div class="testimonial_inner_matter">
+                            <img src="/assets/image/testimonial/2.jpg" class="wow fadeInDown animated">
+                            <p class="wow fadeInDown animated">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                            <h5 class="wow fadeInDown animated">Shoko Mugikura</h5>
+                            <h6 class="wow fadeInDown animated">Design Manager</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="col-sm-12">
+                        <div class="testimonial_inner_matter">
+                            <img src="/assets/image/testimonial/3.jpg" class="wow fadeInDown animated">
+                            <p class="wow fadeInDown animated">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                            <h5 class="wow fadeInDown animated">Shoko Mugikura</h5>
+                            <h6 class="wow fadeInDown animated">Design Manager</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="col-sm-12">
+                        <div class="testimonial_inner_matter">
+                            <img src="/assets/image/testimonial/4.jpg" class="wow fadeInDown animated">
+                            <p class="wow fadeInDown animated">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                            <h5 class="wow fadeInDown animated">Shoko Mugikura</h5>
+                            <h6 class="wow fadeInDown animated">Design Manager</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- testimonial end -->
