@@ -26,7 +26,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Infrastructure", "1. Inf
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Hosts", "3. Hosts", "{E88B3150-6FB7-4850-8FCF-1D9F70EA66F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShopSolution.AdminApp", "eShopSolution.AdminApp\eShopSolution.AdminApp.csproj", "{604AA711-1C98-420B-88F5-5EDDF3A72273}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopSolution.AdminApp", "eShopSolution.AdminApp\eShopSolution.AdminApp.csproj", "{604AA711-1C98-420B-88F5-5EDDF3A72273}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShopSolution.ApiIntergration", "eShopSolution.ApiIntergration\eShopSolution.ApiIntergration.csproj", "{1AE87F9E-EA33-4D7C-AFF0-9130F8459FD3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,6 +64,10 @@ Global
 		{604AA711-1C98-420B-88F5-5EDDF3A72273}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{604AA711-1C98-420B-88F5-5EDDF3A72273}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{604AA711-1C98-420B-88F5-5EDDF3A72273}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AE87F9E-EA33-4D7C-AFF0-9130F8459FD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AE87F9E-EA33-4D7C-AFF0-9130F8459FD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AE87F9E-EA33-4D7C-AFF0-9130F8459FD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AE87F9E-EA33-4D7C-AFF0-9130F8459FD3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +80,7 @@ Global
 		{46709FAD-5DA8-4178-A4D4-92FB5C4C7533} = {DBEC687A-E1FE-42B6-9CB5-3310341239EF}
 		{3F2F4F39-07CE-4548-8476-8218A69D82D3} = {E88B3150-6FB7-4850-8FCF-1D9F70EA66F1}
 		{604AA711-1C98-420B-88F5-5EDDF3A72273} = {E88B3150-6FB7-4850-8FCF-1D9F70EA66F1}
+		{1AE87F9E-EA33-4D7C-AFF0-9130F8459FD3} = {E88B3150-6FB7-4850-8FCF-1D9F70EA66F1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {089ABF51-03D0-481D-AC34-BC33511D9C1F}

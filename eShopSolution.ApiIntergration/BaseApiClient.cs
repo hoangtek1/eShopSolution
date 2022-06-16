@@ -11,7 +11,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
-namespace eShopSolution.AdminApp.Services
+namespace eShopSolution.ApiIntergration
 {
     public class BaseApiClient
     {
@@ -46,7 +46,7 @@ namespace eShopSolution.AdminApp.Services
 
                 return myDeserializedObjList;
             }
-            return JsonConvert.DeserializeObject<TResponse> (body);
+            return JsonConvert.DeserializeObject<TResponse>(body);
         }
 
         public async Task<List<T>> GetListAsync<T>(string url, bool requiredLogin = false)
