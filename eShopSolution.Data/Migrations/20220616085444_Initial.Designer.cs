@@ -10,7 +10,7 @@ using eShopSolution.Data.EF;
 namespace eShopSolution.Data.Migrations
 {
     [DbContext(typeof(EShopDbContext))]
-    [Migration("20220616043505_Initial")]
+    [Migration("20220616085444_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -182,7 +182,7 @@ namespace eShopSolution.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "0a4349f1-6e07-4dd1-b889-2fc9cec8f807",
+                            ConcurrencyStamp = "d4960b44-0da6-45b7-9708-79b42f667cb1",
                             Description = "Administrator role",
                             Name = "admin",
                             NormalizedName = "admin"
@@ -259,7 +259,7 @@ namespace eShopSolution.Data.Migrations
                         {
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6fea3c96-5440-4cd1-848a-75a1715ab9b3",
+                            ConcurrencyStamp = "dd8ebad9-49b9-4816-b51f-1dcee2c5220f",
                             Dob = new DateTime(2020, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "tedu.international@gmail.com",
                             EmailConfirmed = true,
@@ -268,7 +268,7 @@ namespace eShopSolution.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "tedu.international@gmail.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEC77pnzJsjEH5ndjP03lfuA+4hlb/AN35kdySauG17nur0IexkwZSJCi5i0yAI3q6A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENoe1zpXO22lpvwJxADkG4AodSWlOakS+xNPDy6bks1XlS/EOZPoHyKGY+TzRqTluw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -589,6 +589,9 @@ namespace eShopSolution.Data.Migrations
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool?>("IsFeatured")
+                        .HasColumnType("bit");
+
                     b.Property<decimal>("OriginalPrice")
                         .HasColumnType("decimal(18,2)");
 
@@ -613,7 +616,7 @@ namespace eShopSolution.Data.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2022, 6, 16, 11, 35, 4, 834, DateTimeKind.Local).AddTicks(9859),
+                            DateCreated = new DateTime(2022, 6, 16, 15, 54, 44, 508, DateTimeKind.Local).AddTicks(9914),
                             OriginalPrice = 100000m,
                             Price = 200000m,
                             Stock = 0,
@@ -799,6 +802,67 @@ namespace eShopSolution.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Promotions");
+                });
+
+            modelBuilder.Entity("eShopSolution.Data.Entities.Slide", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
+
+                    b.Property<int>("SortOrder")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Slides");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "<h1><localize>Hurry Up!</localize></h1><h2>Hurry Up! Daily Deal Of The Day</h2><p>If you are going to use a passage of Lorem Ipsum,you need to be sure there isn't anything embarrassing hidden in the middle of text. or randomised words which don't look even slightly believable.</p><p> If you are going to use a passage of Lorem Ipsum,you need to be sure there isn't anything embarrassing hidden in the middle of text. or randomised words which don't look even slightly believable.</p><a href='about_us.html' class='btn'>Shop Now</a>",
+                            Image = "/assets/image/about_img.jpg",
+                            Name = "First Thumnail label",
+                            SortOrder = 1,
+                            Status = 1,
+                            Url = "#"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "<h2 class='wow fadeInDown animated'>Our Fashion Shop Work for You</h2><p class='wow fadeInDown animated'>Our Fashion Shop delivers daily and monthly Shop for all readers of our website visitors.</p><p class='wow fadeInDown animated'>Recognized as the best esoteric and fashion online in the USA.Every day we publish fresh products, shop by and for professional products, personalized predictions, shop readings, shose and Chinese fashion Brands and much more.</p><p class='wow fadeInDown animated'>Our Fashion Shop can help you find a proper approach to solving all daily problems and achieving happiness in your life.</p>",
+                            Image = "",
+                            Name = "Second Thumnail label",
+                            SortOrder = 2,
+                            Status = 1,
+                            Url = "#"
+                        });
                 });
 
             modelBuilder.Entity("eShopSolution.Data.Entities.Transaction", b =>

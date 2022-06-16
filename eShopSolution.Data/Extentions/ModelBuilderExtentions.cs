@@ -117,6 +117,34 @@ namespace eShopSolution.Data.Extensions
                 RoleId = roleId,
                 UserId = adminId
             });
+
+            modelBuilder.Entity<Slide>().HasData(
+               new Slide() {
+                        Id = 1,
+                        Name="First Thumnail label",
+                        Description= "<h1><localize>Hurry Up!</localize></h1><h2>Hurry Up! Daily Deal Of The Day</h2>" +
+                        "<p>If you are going to use a passage of Lorem Ipsum," +
+                        "you need to be sure there isn't anything embarrassing hidden in the middle of text. or randomised words which don't look even slightly believable.</p>" + 
+                        "<p> If you are going to use a passage of Lorem Ipsum,"+ 
+                        "you need to be sure there isn't anything embarrassing hidden in the middle of text. or randomised words which don't look even slightly believable.</p>" +                       
+                        "<a href='about_us.html' class='btn'>Shop Now</a>",
+                        SortOrder = 1,
+                        Url = "#",
+                        Image = "/assets/image/about_img.jpg",
+                        Status = Status.Active},
+               new Slide()
+               {
+                   Id = 2,
+                   Name = "Second Thumnail label",
+                   Description = "<h2 class='wow fadeInDown animated'>Our Fashion Shop Work for You</h2>"+
+                    "<p class='wow fadeInDown animated'>Our Fashion Shop delivers daily and monthly Shop for all readers of our website visitors.</p>"+
+                    "<p class='wow fadeInDown animated'>Recognized as the best esoteric and fashion online in the USA.Every day we publish fresh products, shop by and for professional products, personalized predictions, shop readings, shose and Chinese fashion Brands and much more.</p>"+
+                    "<p class='wow fadeInDown animated'>Our Fashion Shop can help you find a proper approach to solving all daily problems and achieving happiness in your life.</p>",
+                   SortOrder = 2,
+                   Url = "#",
+                   Image = "",
+                   Status = Status.Active}
+               );
         }
     }
 }

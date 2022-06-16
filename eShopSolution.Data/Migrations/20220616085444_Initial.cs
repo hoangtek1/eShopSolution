@@ -188,7 +188,8 @@ namespace eShopSolution.Data.Migrations
                     OriginalPrice = table.Column<decimal>(nullable: false),
                     Stock = table.Column<int>(nullable: false, defaultValue: 0),
                     ViewCount = table.Column<int>(nullable: false, defaultValue: 0),
-                    DateCreated = table.Column<DateTime>(nullable: false)
+                    DateCreated = table.Column<DateTime>(nullable: false),
+                    IsFeatured = table.Column<bool>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -214,6 +215,24 @@ namespace eShopSolution.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Promotions", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Slides",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(maxLength: 200, nullable: false),
+                    Description = table.Column<string>(nullable: false),
+                    Url = table.Column<string>(maxLength: 200, nullable: false),
+                    Image = table.Column<string>(maxLength: 200, nullable: false),
+                    SortOrder = table.Column<int>(nullable: false),
+                    Status = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Slides", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -447,7 +466,7 @@ namespace eShopSolution.Data.Migrations
             migrationBuilder.InsertData(
                 table: "AppRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Description", "Name", "NormalizedName" },
-                values: new object[] { new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"), "0a4349f1-6e07-4dd1-b889-2fc9cec8f807", "Administrator role", "admin", "admin" });
+                values: new object[] { new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"), "d4960b44-0da6-45b7-9708-79b42f667cb1", "Administrator role", "admin", "admin" });
 
             migrationBuilder.InsertData(
                 table: "AppUserRoles",
@@ -457,7 +476,7 @@ namespace eShopSolution.Data.Migrations
             migrationBuilder.InsertData(
                 table: "AppUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Dob", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"), 0, "6fea3c96-5440-4cd1-848a-75a1715ab9b3", new DateTime(2020, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "tedu.international@gmail.com", true, "Toan", "Bach", false, null, "tedu.international@gmail.com", "admin", "AQAAAAEAACcQAAAAEC77pnzJsjEH5ndjP03lfuA+4hlb/AN35kdySauG17nur0IexkwZSJCi5i0yAI3q6A==", null, false, "", false, "admin" });
+                values: new object[] { new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"), 0, "dd8ebad9-49b9-4816-b51f-1dcee2c5220f", new DateTime(2020, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "tedu.international@gmail.com", true, "Toan", "Bach", false, null, "tedu.international@gmail.com", "admin", "AQAAAAEAACcQAAAAENoe1zpXO22lpvwJxADkG4AodSWlOakS+xNPDy6bks1XlS/EOZPoHyKGY+TzRqTluw==", null, false, "", false, "admin" });
 
             migrationBuilder.InsertData(
                 table: "Categories",
@@ -479,8 +498,17 @@ namespace eShopSolution.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "Id", "DateCreated", "OriginalPrice", "Price" },
-                values: new object[] { 1, new DateTime(2022, 6, 16, 11, 35, 4, 834, DateTimeKind.Local).AddTicks(9859), 100000m, 200000m });
+                columns: new[] { "Id", "DateCreated", "IsFeatured", "OriginalPrice", "Price" },
+                values: new object[] { 1, new DateTime(2022, 6, 16, 15, 54, 44, 508, DateTimeKind.Local).AddTicks(9914), null, 100000m, 200000m });
+
+            migrationBuilder.InsertData(
+                table: "Slides",
+                columns: new[] { "Id", "Description", "Image", "Name", "SortOrder", "Status", "Url" },
+                values: new object[,]
+                {
+                    { 1, "<h1><localize>Hurry Up!</localize></h1><h2>Hurry Up! Daily Deal Of The Day</h2><p>If you are going to use a passage of Lorem Ipsum,you need to be sure there isn't anything embarrassing hidden in the middle of text. or randomised words which don't look even slightly believable.</p><p> If you are going to use a passage of Lorem Ipsum,you need to be sure there isn't anything embarrassing hidden in the middle of text. or randomised words which don't look even slightly believable.</p><a href='about_us.html' class='btn'>Shop Now</a>", "/assets/image/about_img.jpg", "First Thumnail label", 1, 1, "#" },
+                    { 2, "<h2 class='wow fadeInDown animated'>Our Fashion Shop Work for You</h2><p class='wow fadeInDown animated'>Our Fashion Shop delivers daily and monthly Shop for all readers of our website visitors.</p><p class='wow fadeInDown animated'>Recognized as the best esoteric and fashion online in the USA.Every day we publish fresh products, shop by and for professional products, personalized predictions, shop readings, shose and Chinese fashion Brands and much more.</p><p class='wow fadeInDown animated'>Our Fashion Shop can help you find a proper approach to solving all daily problems and achieving happiness in your life.</p>", "", "Second Thumnail label", 2, 1, "#" }
+                });
 
             migrationBuilder.InsertData(
                 table: "CategoryTranslations",
@@ -609,6 +637,9 @@ namespace eShopSolution.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Promotions");
+
+            migrationBuilder.DropTable(
+                name: "Slides");
 
             migrationBuilder.DropTable(
                 name: "Transactions");
