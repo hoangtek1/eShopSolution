@@ -79,6 +79,6 @@ namespace eShopSolution.Data.EF
 
         public DbSet<ProductImage> ProductImages { get; set; }
 
-
+        public DbSet<Slide> Slides { get; set; }
     }
 }

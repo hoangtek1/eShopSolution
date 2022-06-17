@@ -1,4 +1,5 @@
 ﻿using eShopSolution.Application.System.Roles;
+using eShopSolution.Application.Utilities.Slides;
 using eShopSolution.Data.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -16,9 +17,9 @@ namespace eShopSolution.BackendApi.Controllers
     [Authorize]
     public class RolesController : ControllerBase
     {
-        private readonly IRoleService _roleService;
+        private readonly ISlideService _roleService;
 
-        public RolesController(IRoleService roleService)
+        public RolesController(ISlideService roleService)
         {
             _roleService = roleService;
         }

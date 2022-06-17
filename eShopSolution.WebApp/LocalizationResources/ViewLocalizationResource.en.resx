@@ -121,6 +121,10 @@
     <value>About Us</value>
     <comment>Layouts</comment>
   </data>
+  <data name="Add to Cart" xml:space="preserve">
+    <value>Add to Cart</value>
+    <comment>/Home/Index</comment>
+  </data>
   <data name="Cart" xml:space="preserve">
     <value>Cart</value>
     <comment>Layouts</comment>
@@ -131,6 +135,10 @@
   </data>
   <data name="Categories" xml:space="preserve">
     <value>Categories</value>
+    <comment>Layouts</comment>
+  </data>
+  <data name="categoryUrl" xml:space="preserve">
+    <value>categories</value>
     <comment>Layouts</comment>
   </data>
   <data name="Checkout" xml:space="preserve">
@@ -195,6 +203,10 @@
   </data>
   <data name="Products List" xml:space="preserve">
     <value>Products List</value>
+    <comment>Layouts</comment>
+  </data>
+  <data name="productUrl" xml:space="preserve">
+    <value>products</value>
     <comment>Layouts</comment>
   </data>
   <data name="Read More" xml:space="preserve">

@@ -121,6 +121,10 @@
     <value>Về chúng tôi</value>
     <comment>Layouts</comment>
   </data>
+  <data name="Add to Cart" xml:space="preserve">
+    <value>Thêm vào giỏ hàng</value>
+    <comment>/Home/Index</comment>
+  </data>
   <data name="Cart" xml:space="preserve">
     <value>Giỏ hàng</value>
     <comment>Layouts</comment>
@@ -131,6 +135,10 @@
   </data>
   <data name="Categories" xml:space="preserve">
     <value>Các loại danh mục</value>
+    <comment>Layouts</comment>
+  </data>
+  <data name="categoryUrl" xml:space="preserve">
+    <value>danh-muc</value>
     <comment>Layouts</comment>
   </data>
   <data name="Checkout" xml:space="preserve">
@@ -195,6 +203,10 @@
   </data>
   <data name="Products List" xml:space="preserve">
     <value>Danh sách sản phẩm</value>
+    <comment>Layouts</comment>
+  </data>
+  <data name="productUrl" xml:space="preserve">
+    <value>san-pham</value>
     <comment>Layouts</comment>
   </data>
   <data name="Read More" xml:space="preserve">

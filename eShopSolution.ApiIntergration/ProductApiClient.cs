@@ -79,6 +79,42 @@ namespace eShopSolution.ApiIntergration
             return response.IsSuccessStatusCode;
         }
 
+        public async Task<bool> UpdateProduct(ProductUpdateRequest request)
+        {
+            var sessions = _httpContextAccessor.HttpContext.Session.GetString(SystemConstants.AppSettings.Token);
+            var languageId = _httpContextAccessor.HttpContext.Session.GetString(SystemConstants.AppSettings.DefaultLanguageId);
+            var client = _httpClientFactory.CreateClient();
+            client.BaseAddress = new Uri(_configuration[SystemConstants.AppSettings.BaseAddress]);
+
+            client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", sessions);
+
+            var requestContent = new MultipartFormDataContent();
+
+            var thumbnailImageRequest = request.ThumbnailImage;
+            if (thumbnailImageRequest != null)
+            {
+                byte[] data;
+                using (var br = new BinaryReader(thumbnailImageRequest.OpenReadStream()))
+                {
+                    data = br.ReadBytes((int)thumbnailImageRequest.OpenReadStream().Length);
+                }
+                ByteArrayContent bytes = new ByteArrayContent(data);
+                requestContent.Add(bytes, "ThumbnailImage", thumbnailImageRequest.FileName);
+            }
+
+            requestContent.Add(new StringContent(request.Name.ToString()), "name");
+            requestContent.Add(new StringContent(request.Description.ToString()), "description");
+            requestContent.Add(new StringContent(request.Details.ToString()), "details");
+            requestContent.Add(new StringContent(request.SeoDescription.ToString()), "seoDescription");
+            requestContent.Add(new StringContent(request.SeoTitle.ToString()), "seoTitle");
+            requestContent.Add(new StringContent(request.SeoAlias.ToString()), "seoAlias");
+            requestContent.Add(new StringContent(languageId), "languageId");
+
+            var response = await client.PutAsync($"/api/products/" + request.Id, requestContent);
+            return response.IsSuccessStatusCode;
+        }
+
         public async Task<ApiResult<bool>> CategoryAssign(int id, CategoryAssignRequest request)
         {
             var client = _httpClientFactory.CreateClient();
@@ -103,6 +139,12 @@ namespace eShopSolution.ApiIntergration
         public async Task<ProductVm> GetById(int id, string languageId)
         {
             var data = await GetAsync<ProductVm>($"/api/products/{id}/{languageId}");
+            return data;
+        }
+
+        public async Task<List<ProductVm>> GetFeaturedProducts(string languageId, int take)
+        {
+            var data = await GetListAsync<ProductVm>($"/api/products/featured/{languageId}/{take}");
             return data;
         }
     }

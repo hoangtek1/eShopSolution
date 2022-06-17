@@ -1,4 +1,10 @@
-﻿@{
+﻿@model HomeViewModel
+@using eShopSolution.ViewModels.Catalog.Products;
+@inject LazZiya.ExpressLocalization.ISharedCultureLocalizer _loc;
+@{
+    var culture = CultureInfo.CurrentCulture.Name;
+}
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -67,19 +73,12 @@
     <div id="slideWiz" class="slideWiz" style="width: 100%; height: 500px;"></div>
 </section>
 <!-- about Us -->
-<div id="about_us" class="about_section" style="background-image: url(/assets/image/about_img.jpg);width: 100%;background-repeat: no-repeat; background-size: cover;">
+<div id="about_us" class="about_section" style="background-image: url(@Model.Slides[0].Image);width: 100%;background-repeat: no-repeat; background-size: cover;">
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6">
                 <div class="about_text wow slideInLeft">
-                    <h1><localize>Hurry Up!</localize></h1>
-                    <h2>Hurry Up! Daily Deal Of The Day</h2>
-                    <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. or randomised words which don't look even slightly believable.</p>
-                    <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. or randomised words which don't look even slightly believable.</p>
-
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-
-                    <a href="about_us.html" class="btn">Shop Now</a>
+                    @Html.Raw(@Model.Slides[0].Description)
                 </div>
             </div>
             <div class="col-sm-6">
@@ -100,186 +99,45 @@
         <div class="row">
             <div id="product" class="owl-carousel owl-theme">
                 <!--1 -->
-                <div class="item">
-                    <div class="col-sm-12">
-                        <div class="product-thumb">
-                            <div class="image wow fadeInDown animated">
-                                <a href="single-products.html"><img class="wow fadeInDown animated" src="/assets/image/category/product-1.jpg" alt="Kundli Dosha" title="Kundli Dosha"></a>
+                @foreach (var product in Model.FeaturedProducts)
+                {
+                    var url = $"/{culture}/{_loc["productUrl"]}/{product.Id}";
+                    <div class="item">
+                        <div class="col-sm-12">
+                            <div class="product-thumb">
+                                <div class="image wow fadeInDown animated">
+                                    <a href="@url"><img class="wow fadeInDown animated" src="@product.ThumbnailImage" alt="Kundli Dosha" title="Kundli Dosha"></a>
 
-                                <div class="sale"><span class="">Sale</span></div>
-                                <div class="button-group">
-                                    <div class="inner">
-                                        <button type="button" title="Quick View" class="button-quickview"><span>Quick View</span></button>
-                                        <button type="button" title="Add to Wish List" class="button-wishlist"><span>Add to Wish List</span></button>
-                                        <button type="button" title="Compare this Product" class="button-compare"><span>Compare this Product</span></button>
+                                    <div class="sale"><span class="">Sale</span></div>
+                                    <div class="button-group">
+                                        <div class="inner">
+                                            <button type="button" title="Quick View" class="button-quickview"><span>Quick View</span></button>
+                                            <button type="button" title="Compare this Product" class="button-compare"><span>Compare this Product</span></button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="caption">
+                                <div class="caption">
 
-                                <div class="rate-and-title">
-                                    <h4 class="wow fadeInDown animated"><a href="single-products.html">Natural Mineral Stone</a></h4>
-                                    <div class="rating wow fadeInDown animated">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <div class="clear"></div>
+                                    <div class="rate-and-title">
+                                        <h4 class="wow fadeInDown animated"><a href="single-products.html">@product.Name</a></h4>
+                                        <div class="rating wow fadeInDown animated">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <div class="clear"></div>
+                                        </div>
+                                        <p class="price wow fadeInDown animated">
+                                            <span class="price-old">@product.OriginalPrice</span> <span class="price-new">@product.Price</span>
+                                        </p>
+                                        <button type="button" class="btn wow fadeInDown animated" onclick="" title="Add to Cart"><span><i class="fa fa-shopping-cart"></i><localize>Add to Cart</localize></span></button>
                                     </div>
-                                    <p class="price wow fadeInDown animated">
-                                        <span class="price-old">$123.20</span> <span class="price-new">$110.00</span>
-                                    </p>
-                                    <button type="button" class="btn wow fadeInDown animated" onclick="" title="Add to Cart"><span><i class="fa fa-shopping-cart"></i> Add to Cart</span></button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- 2-->
-                <div class="item">
-                    <div class="col-sm-12">
-                        <div class="product-thumb">
-                            <div class="image wow fadeInDown animated">
-                                <a href="single-products.html"><img class="wow fadeInDown animated" src="/assets/image/category/product-2.jpg" alt="Kundli Dosha" title="Kundli Dosha"></a>
-
-                                <div class="sale"><span class="">Sale</span></div>
-                                <div class="button-group">
-                                    <div class="inner">
-                                        <button type="button" title="Quick View" class="button-quickview"><span>Quick View</span></button>
-                                        <button type="button" title="Add to Wish List" class="button-wishlist"><span>Add to Wish List</span></button>
-                                        <button type="button" title="Compare this Product" class="button-compare"><span>Compare this Product</span></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="caption">
-
-                                <div class="rate-and-title">
-                                    <h4 class="wow fadeInDown animated"><a href="single-products.html">Natural Agate</a></h4>
-                                    <div class="rating wow fadeInDown animated">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <p class="price wow fadeInDown animated">
-                                        <span class="price-old">$123.20</span> <span class="price-new">$110.00</span>
-                                    </p>
-                                    <button type="button" class="btn wow fadeInDown animated" onclick="" title="Add to Cart"><span><i class="fa fa-shopping-cart"></i> Add to Cart</span></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- 3-->
-                <div class="item">
-                    <div class="col-sm-12">
-                        <div class="product-thumb">
-                            <div class="image wow fadeInDown animated">
-                                <a href="single-products.html"><img class="wow fadeInDown animated" src="/assets/image/category/product-3.jpg" alt="Kundli Dosha" title="Kundli Dosha"></a>
-                                <div class="button-group">
-                                    <div class="inner">
-                                        <button type="button" title="Quick View" class="button-quickview"><span>Quick View</span></button>
-                                        <button type="button" title="Add to Wish List" class="button-wishlist"><span>Add to Wish List</span></button>
-                                        <button type="button" title="Compare this Product" class="button-compare"><span>Compare this Product</span></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="caption">
-
-                                <div class="rate-and-title">
-                                    <h4 class="wow fadeInDown animated"><a href="single-products.html">Rose Quartz</a></h4>
-                                    <div class="rating wow fadeInDown animated">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <p class="price wow fadeInDown animated">
-                                        <span class="price-new">$50.00</span>
-                                    </p>
-                                    <button type="button" class="btn wow fadeInDown animated" onclick="" title="Add to Cart"><span><i class="fa fa-shopping-cart"></i> Add to Cart</span></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--4 -->
-                <div class="item">
-                    <div class="col-sm-12">
-                        <div class="product-thumb">
-                            <div class="image wow fadeInDown animated">
-                                <a href="single-products.html"><img class="wow fadeInDown animated" src="/assets/image/category/product-4.jpg" alt="Kundli Dosha" title="Kundli Dosha"></a>
-                                <div class="button-group">
-                                    <div class="inner">
-                                        <button type="button" title="Quick View" class="button-quickview"><span>Quick View</span></button>
-                                        <button type="button" title="Add to Wish List" class="button-wishlist"><span>Add to Wish List</span></button>
-                                        <button type="button" title="Compare this Product" class="button-compare"><span>Compare this Product</span></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="caption">
-
-                                <div class="rate-and-title">
-                                    <h4 class="wow fadeInDown animated"><a href="single-products.html">Titanium Quartz</a></h4>
-                                    <div class="rating wow fadeInDown animated">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <p class="price wow fadeInDown animated">
-                                        <span class="price-old">$123.20</span> <span class="price-new">$110.00</span>
-                                    </p>
-                                    <button type="button" class="btn wow fadeInDown animated" onclick="" title="Add to Cart"><span><i class="fa fa-shopping-cart"></i> Add to Cart</span></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--5 -->
-                <div class="item">
-                    <div class="col-sm-12">
-                        <div class="product-thumb">
-                            <div class="image wow fadeInDown animated">
-                                <a href="single-products.html"><img class="wow fadeInDown animated" src="/assets/image/category/product-5.jpg" alt="Kundli Dosha" title="Kundli Dosha"></a>
-
-                                <div class="sale"><span class="">Sale</span></div>
-                                <div class="button-group">
-                                    <div class="inner">
-                                        <button type="button" title="Quick View" class="button-quickview"><span>Quick View</span></button>
-                                        <button type="button" title="Add to Wish List" class="button-wishlist"><span>Add to Wish List</span></button>
-                                        <button type="button" title="Compare this Product" class="button-compare"><span>Compare this Product</span></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="caption">
-
-                                <div class="rate-and-title">
-                                    <h4 class="wow fadeInDown animated"><a href="single-products.html">Natural Mineral Stone</a></h4>
-                                    <div class="rating wow fadeInDown animated">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <p class="price wow fadeInDown animated">
-                                        <span class="price-old">$123.20</span> <span class="price-new">$110.00</span>
-                                    </p>
-                                    <button type="button" class="btn wow fadeInDown animated" onclick="" title="Add to Cart"><span><i class="fa fa-shopping-cart"></i> Add to Cart</span></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                }
                 <!-- products end -->
             </div>
         </div>
@@ -292,10 +150,7 @@
         <div class="row">
             <div class="col-sm-6 condition-set">
                 <div class="astrologers_title">
-                    <h2 class="wow fadeInDown animated">Our Fashion Shop Work for You</h2>
-                    <p class="wow fadeInDown animated">Our Fashion Shop delivers daily and monthly Shop for all readers of our website visitors.</p>
-                    <p class="wow fadeInDown animated">Recognized as the best esoteric and fashion online in the USA. Every day we publish fresh products, shop by and for professional products, personalized predictions, shop readings, shose and Chinese fashion Brands and much more.</p>
-                    <p class="wow fadeInDown animated">Our Fashion Shop can help you find a proper approach to solving all daily problems and achieving happiness in your life.</p>
+                    @Html.Raw(@Model.Slides[1].Description)
                 </div>
             </div>
 

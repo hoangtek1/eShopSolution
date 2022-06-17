@@ -248,21 +248,8 @@
                                         <li class="nav-item"><a href="about_us.html" class="nav-link"><localize>About Us</localize></a></li>
 
                                         <li class="nav-item">
-                                            <a href="#" class="nav-link"><localize>Products</localize><i class="fa fa-angle-down"></i></a>
-                                            <ul class="dropdown-menu">
-                                                <li class="nav-item"><a href="products.html" class="nav-link">Coats</a></li>
-
-                                                <li class="nav-item"><a href="products.html" class="nav-link">Outwear</a></li>
-
-                                                <li class="nav-item"><a href="products.html" class="nav-link">T-shirt</a></li>
-
-                                                <li class="nav-item"><a href="products.html" class="nav-link">Caps</a></li>
-                                                <li class="nav-item"><a href="products.html" class="nav-link">Shoes</a></li>
-                                                <li class="nav-item"><a href="products.html" class="nav-link">Innerwear</a></li>
-                                                <li class="nav-item"><a href="products.html" class="nav-link">Suits</a></li>
-                                                <li class="nav-item"><a href="products.html" class="nav-link">Shirt</a></li>
-
-                                            </ul>
+                                            <a asp-action="Index" asp-controller="Product" class="nav-link"><localize>Products</localize><i class="fa fa-angle-down"></i></a>
+                                            @await Component.InvokeAsync("Dropdown")
                                         </li>
                                         <li class="nav-item">
                                             <a href="#" class="nav-link"><localize>Pages</localize><i class="fa fa-angle-down"></i></a>
@@ -444,9 +431,6 @@
     <!-- script files -->
     <!-- home silder -->
     @RenderSection("Scripts", false)
-    
-
-
     <script src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="/assets/js/custom.js"></script>
     <!-- script files -->

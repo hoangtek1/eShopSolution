@@ -1,0 +1,27 @@
+﻿@model List<eShopSolution.ViewModels.Catalog.Categories.CategoryVm>
+@inject LazZiya.ExpressLocalization.ISharedCultureLocalizer _loc;
+@{
+    var culture = CultureInfo.CurrentCulture.Name;
+}
+<ul class="dropdown-menu">
+    @{
+        var parents = Model.Where(x => x.ParentId == null);
+    }
+    @foreach (var parent in parents)
+    {
+        var children = Model.Where(x => x.ParentId == parent.Id);
+        <li class="nav-item">
+            <a href="/@culture/@_loc["categoryUrl"]/@parent.Id" class="nav-link">@parent.Name</a>
+            @if (children.Any())
+            {
+                @foreach (var item in children)
+                {
+                    <ul class="dropdown-menu">
+                        <li class="nav-item"><a href="/@culture/@_loc["categoryUrl"]/@item.Id" class="nav-link">@item.Name</a></li>
+                    </ul>
+                }
+            }
+        </li>
+
+    }
+</ul>
