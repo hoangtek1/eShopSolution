@@ -38,12 +38,12 @@ namespace eShopSolution.WebApp.Controllers
         public async Task<IActionResult> Login(LoginRequest request)
         {
             if (!ModelState.IsValid)
-                return View(ModelState);
+                return View(request);
 
             var result = await _userApiClient.Authenticate(request);
             if (result.ResultObject == null)
             {
-                ModelState.AddModelError("", result.Message);
+                ModelState.AddModelError("", "Login Failure!");
                 return View();
             }
             var userPrincipal = this.ValidateToken(result.ResultObject);
@@ -91,10 +91,20 @@ namespace eShopSolution.WebApp.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> Register(LoginRequest request)
-        //{
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterRequest request)
+        {
+            if (!ModelState.IsValid)
+                return View(request);
 
-        //}
+            var result = await _userApiClient.RegisterUser(request);
+            if (!result.IsSuccessed)
+            {
+                ModelState.AddModelError("", result.Message);
+                return View();
+            }
+
+            return RedirectToAction("Login", "Account");
+        }
     }
 }

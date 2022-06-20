@@ -1,6 +1,7 @@
-﻿
+﻿@model eShopSolution.ViewModels.System.Users.RegisterRequest 
 @{
     ViewData["Title"] = "Register";
+    var culture = CultureInfo.CurrentCulture.Name;
 }
 
 <section class="main_breadcrumb">
@@ -30,29 +31,42 @@
                 <div class="col-sm-6 col-lg-6">
                     <div class="login_box">
                         <h3>Create Your Account</h3>
-                        <form class="eb-form eb-mailform form-checkout" novalidate="novalidate">
+                        <form asp-action="Register" asp-controller="Account" method="post" class="eb-form eb-mailform form-checkout" novalidate="novalidate">
                             <div class="form-wrap has-error">
-                                <input class="form-input form-control" id="checkout-first-name-1" type="text" name="name"  placeholder="First Name">
+                                <input class="form-input form-control" id="checkout-first-name-1" type="text" asp-for="FirstName" placeholder="First Name:">
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
                             </div>
                             <div class="form-wrap has-error">
-                                <input class="form-input form-control" id="checkout-last-name-1" type="text" name="name"  placeholder="Last Name">
+                                <input class="form-input form-control" id="checkout-last-name-1" type="text" asp-for="LastName" placeholder="Last Name:">
+                                <span asp-validation-for="LastName" class="text-danger"></span>
                             </div>
                             <div class="form-wrap">
-                                <input class="form-input form-control" id="checkout-email-1" type="email" name="email"  placeholder="E-Mail">
+                                <input class="form-input form-control" type="date" asp-for="Dob" placeholder="Dob:">
+                                <span asp-validation-for="Dob" class="text-danger"></span>
                             </div>
                             <div class="form-wrap">
-                                <input class="form-input form-control" id="checkout-city-1" type="text" name="password"  placeholder="Password:">
+                                <input class="form-input form-control" type="number" asp-for="PhoneNumber" placeholder="Phone Number:">
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                             </div>
                             <div class="form-wrap">
-                                <input class="form-input form-control" id="checkout-phone-1" type="password" name="phone"  placeholder="Confirm Password:">
+                                <input class="form-input form-control" id="checkout-email-1" type="email" asp-for="Email" placeholder="E-Mail:">
+                                <span asp-validation-for="Email" class="text-danger"></span>
                             </div>
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
-                                <label class="custom-control-label register-remember" for="defaultUnchecked">Remember me on this device</label>
+                            <div class="form-wrap">
+                                <input class="form-input form-control" id="checkout-city-1" type="text" asp-for="UserName" placeholder="User Name:">
+                                <span asp-validation-for="UserName" class="text-danger"></span>
+                            </div>
+                            <div class="form-wrap">
+                                <input class="form-input form-control" id="checkout-city-1" type="password" asp-for="Password" placeholder="Password:">
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="form-wrap">
+                                <input class="form-input form-control" id="checkout-phone-1" type="password" asp-for="ConfirmPassword" placeholder="Confirm Password:">
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                             </div>
                             <button type="submit" class="btn ">Register</button>
 
-                            <p class="signInclass"> Already have an account? &nbsp;<a href="login.html">Sign In</a> </p>
+                            <p class="signInclass"> Already have an account? &nbsp;<a href="/@culture/Account/Login">Sign In</a> </p>
 
                         </form>
                     </div>
