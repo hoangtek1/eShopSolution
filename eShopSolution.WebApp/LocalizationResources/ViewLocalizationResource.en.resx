@@ -197,9 +197,13 @@
     <value>Pages</value>
     <comment>Layouts</comment>
   </data>
-  <data name="Products" xml:space="preserve">
-    <value>Products</value>
-    <comment>Layouts</comment>
+  <data name="Product Detail" xml:space="preserve">
+    <value>Product Detail</value>
+    <comment>Common</comment>
+  </data>
+  <data name="products" xml:space="preserve">
+    <value>products</value>
+    <comment>Common</comment>
   </data>
   <data name="Products List" xml:space="preserve">
     <value>Products List</value>

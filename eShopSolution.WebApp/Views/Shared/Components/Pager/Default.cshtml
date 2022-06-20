@@ -1,12 +1,12 @@
 ﻿@model eShopSolution.ViewModels.Common.PagedResultBase
 @{
-    var urlTemplate = Url.Action() + "?pageIndex={0}";
+    var urlTemplate = Url.Action() + "?page={0}";
     var request = ViewContext.HttpContext.Request;
 
 
     foreach (var key in request.Query.Keys)
     {
-        if (key == "pageIndex")
+        if (key == "page")
         {
             continue;
         }
@@ -28,17 +28,31 @@
     var finishIndex = Math.Min(Model.PageIndex + 5, Model.PageCount);
 
 }
-<h1>@urlTemplate</h1>
+
 
 @if (Model.PageCount > 1)
 {
     <div class="pagination-section text-center wow fadeInDown animated">
-        <a href="#" class="prev page-numbers"><i class="fa fa-angle-left"></i></a>
-        <span class="page-numbers current" aria-current="page">@startIndex</span>
-        <a href="#" class="page-numbers">2</a>
-        <a href="#" class="page-numbers">3</a>
-        <a href="#" class="page-numbers">4</a>
-        <a href="#" class="page-numbers">@finishIndex</a>
-        <a href="#" class="next page-numbers"><i class="fa fa-angle-right"></i></a>
+        @if (Model.PageIndex != startIndex)
+        {
+            <a href="@urlTemplate.Replace("{0}", (Model.PageIndex-1).ToString())" class="prev page-numbers"><i class="fa fa-angle-left"></i></a>
+        }
+        @for (var i = startIndex; i <= finishIndex; i++)
+        {
+            if (i == Model.PageIndex)
+            {
+                <span class="page-numbers current" aria-current="page">@i.ToString()</span>
+            }
+            else
+            {
+                <a href="@urlTemplate.Replace("{0}", i.ToString())" class="page-numbers">@i.ToString()</a>
+            }
+        }
+        @if (Model.PageIndex != finishIndex)
+        {
+            <a href="@urlTemplate.Replace("{0}", (Model.PageIndex+1).ToString())" class="next page-numbers">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        }
     </div>
 }

@@ -23,5 +23,12 @@ namespace eShopSolution.BackendApi.Controllers
             var products = await _categoryService.GetAll(languageId);
             return Ok(products);
         }
+
+        [HttpGet("{id}/{languageId}")]
+        public async Task<IActionResult> GetById(string languageId, int Id)
+        {
+            var category = await _categoryService.GetById(languageId, Id);
+            return Ok(category);
+        }
     }
 }

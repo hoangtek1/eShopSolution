@@ -1,6 +1,7 @@
 ﻿@model HomeViewModel
 @using eShopSolution.ViewModels.Catalog.Products;
 @inject LazZiya.ExpressLocalization.ISharedCultureLocalizer _loc;
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration;
 @{
     var culture = CultureInfo.CurrentCulture.Name;
 }
@@ -106,7 +107,7 @@
                         <div class="col-sm-12">
                             <div class="product-thumb">
                                 <div class="image wow fadeInDown animated">
-                                    <a href="@url"><img class="wow fadeInDown animated" src="@product.ThumbnailImage" alt="Kundli Dosha" title="Kundli Dosha"></a>
+                                    <a href="@url"><img class="wow fadeInDown animated" src="@(Configuration["BaseAddress"] + product.ThumbnailImage)" alt="Kundli Dosha" title="Kundli Dosha"></a>
 
                                     <div class="sale"><span class="">Sale</span></div>
                                     <div class="button-group">

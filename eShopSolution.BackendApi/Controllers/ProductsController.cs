@@ -29,6 +29,7 @@ namespace eShopSolution.BackendApi.Controllers
 
 
         [HttpGet("{productId}/{languageId}")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetById(int productId, string languageId)
         {
             var product = await _productService.GetById(productId, languageId);

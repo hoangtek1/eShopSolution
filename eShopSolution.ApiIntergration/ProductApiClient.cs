@@ -147,5 +147,10 @@ namespace eShopSolution.ApiIntergration
             var data = await GetListAsync<ProductVm>($"/api/products/featured/{languageId}/{take}");
             return data;
         }
+
+        public async Task<bool> DeleteProduct(int id)
+        {
+            return await Delete($"/api/products/{id}");
+        }
     }
 }

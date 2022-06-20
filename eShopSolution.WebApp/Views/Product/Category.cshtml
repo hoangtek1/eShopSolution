@@ -1,6 +1,9 @@
-﻿
+﻿@model ProductCategoryViewModel
+@inject LazZiya.ExpressLocalization.ISharedCultureLocalizer _loc;
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration;
 @{
     ViewData["Title"] = "Category";
+    var culture = CultureInfo.CurrentCulture;
 }
 @section Ref {
     <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
@@ -179,10 +182,12 @@
                             <div class="clear"></div>
                         </div>
                         <!-- product-list-top -->
+                        @foreach (var item in Model.Products.Items)
+                        {
                             <div class="col-sm-4">
                                 <div class="product-thumb">
                                     <div class="image wow fadeInDown animated">
-                                        <a href=""><img class="wow fadeInDown animated" src="" alt="Kundli Dosha" title="Kundli Dosha"></a>
+                                        <a href="/@culture.Name/@_loc["products"]/@item.Id"><img class="wow fadeInDown animated" src="@(Configuration["BaseAddress"] + item.ThumbnailImage) " alt="@item.Name" title="@item.Name"></a>
 
                                         <div class="sale"><span class="">Sale</span></div>
                                         <div class="button-group">
@@ -197,7 +202,7 @@
                                     <div class="caption">
 
                                         <div class="rate-and-title">
-                                            <h4 class="wow fadeInDown animated"><a href=""></a></h4>
+                                            <h4 class="wow fadeInDown animated"><a href="single-products.html">@item.Name</a></h4>
                                             <div class="rating wow fadeInDown animated">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -207,17 +212,19 @@
                                                 <div class="clear"></div>
                                             </div>
                                             <p class="price wow fadeInDown animated">
-                                                <span class="price-old">$123.20</span> <span class="price-new"></span>
+                                                <span class="price-old">@item.Price.ToString("C", culture)</span> <span class="price-new"></span>
                                             </p>
                                             <button type="button" class="btn wow fadeInDown animated" onclick="" title="Add to Cart"><span><i class="fa fa-shopping-cart"></i> Add to Cart</span></button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        }
+
                         <!-- products end -->
                         <!-- Pagination -->
                         <div class="clear"></div>
-                        @*@await Component.InvokeAsync("Pager", Model)*@
+                        @await Component.InvokeAsync("Pager", Model.Products)
                         <!-- Pagination End-->
                     </div>
                 </div>
