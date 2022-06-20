@@ -49,8 +49,25 @@
 
                     <div class="col-lg-4 col-md-12">
                         <ul class="top-header-social header_account">
-                            <li><a href="login.html"><i class="fa fa-sign-in"></i><localize> Login </localize><span>/</span></a> </li>
-                            <li><a href="register.html"><i class="fa fa-pencil-square-o"></i> <localize> Register</localize></a></li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                            <li>
+                                <i class="fa glyphicon-user" aria-hidden="true"></i>@User.Identity.Name<span> /</span>
+                            </li>
+                                <li>
+                                    <form action="/@culture/Account/Logout" method="post">
+                                        <button  type="submit">
+                                            <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                            <localize> Logout</localize>
+                                        </button>
+                                    </form>
+                                </li>
+                            }
+                            else
+                            {
+                                <li><a href="/@culture/Account/Login"><i class="fa fa-sign-in"></i><localize> Login </localize><span>/</span></a> </li>
+                                <li><a href="/@culture/Account/Register"><i class="fa fa-pencil-square-o"></i> <localize> Register</localize></a></li>
+                            }
                         </ul>
                     </div>
 
@@ -322,7 +339,7 @@
     </header>
     <!-- Header End -->
     <!-- silder -->
-    
+
 
     <div>
         @RenderBody()
